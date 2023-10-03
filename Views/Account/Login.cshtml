@@ -1,0 +1,17 @@
+<div class="text-center">
+<form action='@Url.Action("Logueado", "Account")' class="form-signin">
+        <h1 class="h3 mb-3 font-weight-normal">Incia sesion</h1>
+        <label for="inputEmail" class="sr-only">Usuario</label>
+        <input type="text" name="Username" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus value="">
+        <label for="inputPassword" class="sr-only">Contraseña</label>
+        <input type="password" id="inputPassword" name="Contrasena" placeholder="Contraseña" class="form-control" required value="">
+        @if(ViewBag.error != null){
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.error
+            </div>
+            <span>Has olvidado tu Contraseña?<a href='@Url.Action("CambioContraseña", "Account")'>Recupera tu contraseña</a></span>
+        }
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+</form>
+<span>¿No tenes cuenta?<a href='@Url.Action("Registro", "Account")'>Registrate</a></span>
+</div>

@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.login{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  padding: 10px;
+}
