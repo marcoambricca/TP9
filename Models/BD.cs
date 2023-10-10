@@ -20,11 +20,11 @@ public static class BD{
         }
     }
 
-    public static List<Usuario> ObtenerUsuarios(){
-        List<Usuario> user = null;
+    public static List<string> ObtenerUsuarios(){
+        List<string> user = null;
         using (SqlConnection db = new SqlConnection(ConnectionString)){
-            string sql = "SELECT * FROM Usuario";
-            user = db.Query<Usuario>(sql).ToList();                                                              
+            string sql = "SELECT username FROM Usuario";
+            user = db.Query<string>(sql).ToList();                                                              
         }
         return user;
     }

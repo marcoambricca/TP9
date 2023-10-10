@@ -48,13 +48,13 @@
               <div class="col-md-6 mb-4 pb-2">
                   <div class="form-outline">
                     <label class="form-label" for="Contrasena">Contraseña</label>
-                    <input type="pass" id="Contrasena" class="form-control form-control-lg" name="Contrasena" value=""/>
+                    <input type="password" id="Contrasena" class="form-control form-control-lg" name="Contrasena" value=""/>
                   </div>
                 </div>
               <div class="col-md-6 mb-4 pb-2">
                   <div class="form-outline">
                     <label class="form-label" for="RepetirContrasena">Repetir contraseña</label>
-                    <input type="pass" id="RepetirContrasena" class="form-control form-control-lg" name="RepetirContrasena"/>
+                    <input type="password" id="RepetirContrasena" class="form-control form-control-lg" name="RepetirContrasena"/>
                   </div>
               </div>
               <div class="col-md-6 mb-4 pb-2">
@@ -67,6 +67,14 @@
               <div class="mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" type="submit" value="Submit"/>
               </div>
+                <div id="mensajeError" class="alert alert-danger" role="alert" style="display: none;">
+                    <p id="error"></p>
+                </div>
+                @if(ViewBag.error != null){
+                  <div class="alert alert-danger" role="alert">
+                      @ViewBag.error
+                  </div>
+                }
 
             </form>
           </div>
@@ -103,7 +111,12 @@
       }
     }
     }
-    
+    if(mayus == false){
+      const error = document.getElementById("error");
+      error.innerHTML = "Contraseña incorrecta, minimo 8 caracteres, un carcater especial y un numero.";
+      const mensajeError = document.getElementById("mensajeError");
+      mensajeError.style.display = "block";
+    }
     return (mayus == true)
   }
   

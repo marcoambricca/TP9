@@ -25,8 +25,24 @@ public class Account : Controller
     }
 
     public IActionResult CrearUsuario(string Nombre, string Apellido, string Username, string Email, string Contrasena, string preguntaSeguridad){
-        BD.CrearUsuario(Username, Contrasena, Nombre, Apellido, Email, preguntaSeguridad);
-        return RedirectToAction("Login");
+        int i = 0;
+        bool encontrado = false;
+        List<string> usuarios = new List<string>();
+        usuarios = BD.ObtenerUsuarios();
+        while(i<usuarios.Count && encontrado == false){
+            if(Username == usuarios[i]){
+                encontrado = true;
+            }
+            i++;
+        }
+        if(encontrado == true){
+            ViewBag.error = "Ese nombre de usuario ya existe";
+            return View("Registro");
+        }else{
+            BD.CrearUsuario(Username, Contrasena, Nombre, Apellido, Email, preguntaSeguridad);
+            return RedirectToAction("Login");
+        }
+        
     }
 
     public IActionResult CambioContraseña(){
